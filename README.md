@@ -12,20 +12,15 @@ A docker image contains everything you need for file previewing, based on [Julie
 This docker container includes
 
 - [unoconv](https://github.com/dagwieers/unoconv)
-- [Ghostscript](https://www.ghostscript.com/)
 - [Imagemagick](https://www.imagemagick.org/script/index.php)
 - [ffmpeg](https://www.ffmpeg.org/)
 
-## Usage
-
-- TBA
-
 ## Test
 
-- TBA
-
 ```
-docker run -v $PWD/test:/tmp ryanhanwu/docker-filepreview unoconv -f pdf /tmp/file.doc
+docker run ryanhanwu/docker-filepreview:latest libreoffice --version
+docker run ryanhanwu/docker-filepreview:latest unoconv --version
+docker run ryanhanwu/docker-filepreview:latest convert --version
 ```
 
 ## References
