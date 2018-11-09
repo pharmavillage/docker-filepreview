@@ -4,14 +4,20 @@ RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:libreoffice/ppa
 
 # Fix issue:  Fontconfig error: Cannot load default config file
-ENV FONTCONFIG_PATH=/etc/fonts 
+ENV FONTCONFIG_PATH=/etc/fonts
 
-# Install Packages 
+# Install Packages
 RUN apt-get update && apt-get install -y \
+    build-essential \
+    libcairo2-dev \
+    libpango1.0-dev \
+    libjpeg-dev \
+    libgif-dev \
+    librsvg2-dev \
     curl \
     libreoffice \
-    imagemagick \ 
-    unoconv \ 
+    imagemagick \
+    unoconv \
     hyphen-fr \
     hyphen-de \
     hyphen-en-us \
