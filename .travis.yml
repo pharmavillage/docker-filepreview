@@ -14,7 +14,7 @@ before_install:
   - sudo apt-get -y install docker-ce
 
 script:
-  - docker build -t ryanhanwu/filepreview:latest .
+  - docker build -t ryanhanwu/filepreview:latest -f ubuntu/Dockerfile .
 
 after_script:
   - docker images
