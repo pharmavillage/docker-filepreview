@@ -14,10 +14,14 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libgif-dev \
     librsvg2-dev \
+    libraw-dev \
+    libwebp-dev \
+    libopenjp2-7 \
     curl \
     wget \
     libreoffice \
     unoconv \
+    autotrace \
     hyphen-fr \
     hyphen-de \
     hyphen-en-us \
