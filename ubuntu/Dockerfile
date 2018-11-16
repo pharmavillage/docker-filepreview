@@ -1,4 +1,4 @@
-FROM jrottenberg/ffmpeg:4.0-ubuntu as Basic
+FROM jrottenberg/ffmpeg:4.0-ubuntu
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:libreoffice/ppa
@@ -15,14 +15,17 @@ RUN apt-get update && apt-get install -y \
     libgif-dev \
     librsvg2-dev \
     curl \
+    wget \
     libreoffice \
-    imagemagick \
     unoconv \
     hyphen-fr \
     hyphen-de \
     hyphen-en-us \
     hyphen-it \
     hyphen-ru \
+    ttf-wqy-zenhei \
+    fonts-arphic-ukai \
+    fonts-arphic-uming \
     fonts-dejavu \
     fonts-dejavu-core\
     fonts-dejavu-extra \
@@ -40,6 +43,15 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Install latest version ImageMagick
+RUN wget https://www.imagemagick.org/download/ImageMagick.tar.gz && \
+    tar xf ImageMagick.tar.gz && \
+    cd ImageMagick-7* && \
+    ./configure && \
+    make && \
+    make install && \
+    ldconfig /usr/local/lib
 
 ENTRYPOINT [""]
 
