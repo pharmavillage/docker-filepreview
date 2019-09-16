@@ -1,4 +1,4 @@
-FROM jrottenberg/ffmpeg:4.0-ubuntu
+FROM jrottenberg/ffmpeg:4.1-ubuntu
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:libreoffice/ppa
@@ -9,19 +9,10 @@ ENV FONTCONFIG_PATH=/etc/fonts
 # Install Packages
 RUN apt-get update && apt-get install -y \
     build-essential \
-    libcairo2-dev \
-    libpango1.0-dev \
-    libjpeg-dev \
-    libgif-dev \
-    librsvg2-dev \
-    libraw-dev \
-    libwebp-dev \
-    libopenjp2-7 \
+    python3-pip \
     curl \
     wget \
     libreoffice \
-    unoconv \
-    autotrace \
     hyphen-fr \
     hyphen-de \
     hyphen-en-us \
@@ -47,7 +38,7 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+RUN pip3 install unoconv
 # Install latest version ImageMagick
 RUN wget https://www.imagemagick.org/download/ImageMagick.tar.gz && \
     tar xf ImageMagick.tar.gz && \
