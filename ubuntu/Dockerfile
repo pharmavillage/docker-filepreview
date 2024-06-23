@@ -1,4 +1,13 @@
-FROM jrottenberg/ffmpeg:4.1-ubuntu
+# Use the official Ubuntu base image for ARM
+FROM arm64v8/ubuntu:latest
+
+# Install FFmpeg and other dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        ffmpeg \
+        && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN apt-get update && apt-get install -y software-properties-common
 RUN add-apt-repository -y ppa:libreoffice/ppa
